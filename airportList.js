@@ -37,5 +37,3 @@ var flightIndex = [
     { x: airportList[17], y: airportList[18] },
     { x: airportList[14], y: airportList[19] }
 ];
-
-console.log(flightIndex[0].x);
