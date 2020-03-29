@@ -1,5 +1,8 @@
 var map;
 
+var posone = airportList[0];
+var postwo = airportList[1];
+
 var areaOnePos = [
   { lat: 52.2045475, lng: 4.62583333 },
   { lat: 52.18091667, lng: 5.0 },
@@ -23,11 +26,11 @@ var areaTwoPos = [
 
 ehamAirportCoords = { lat: 52.30805556, lng: 4.76416667 }; //amsterdam
 
-ehehAirportCoords = { lat: 51.45000000, lng: 5.37444444 };
+ehehAirportCoords = { lat: 51.45000000, lng: 5.37444444 }; //eindhoven
 
-bruAirportCoords = { lat: 50.90083056, lng: 4.48388889 };
+bruAirportCoords = { lat: 50.90083056, lng: 4.48388889 }; //bruxelles
 
-anrAirportCoords = { lat: 51.18700000, lng: 4.45611111 };
+anrAirportCoords = { lat: 51.18700000, lng: 4.45611111 }; //antwerp
 
 pariAirportCoords = { lat: 49.009724, lng: 2.547778 }; // paris
 
@@ -61,22 +64,17 @@ function initMap() {
   var marker = new google.maps.Marker({
     position: ehamAirportCoords,
     map: map
-  });
+  }); 
   marker.setMap(map);
-
-  var flightPlanCoordinates = [
-    lhrAirportCoords,
-    wswAirportCoords
-  ];
-
+  
   var dottedLine = {
     path: 'M 0,-1 0,1',
           strokeOpacity: 1,
           scale: 2
   };
 
-  var flightPath = new google.maps.Polyline({
-    path: flightPlanCoordinates,
+  var flightPath = (departureAirport, arrivalAirport) => new google.maps.Polyline({
+    path: [departureAirport, arrivalAirport],
     geodesic: true,
     strokeColor: 'blue',
     strokeOpacity: 0,
@@ -87,8 +85,18 @@ function initMap() {
     }]
   });
 
-  flightPath.setMap(map);
-
+  flightPath(airportList[0], airportList[4]).setMap(map);
+  flightPath(airportList[5], airportList[7]).setMap(map);
+  flightPath(airportList[5], airportList[9]).setMap(map);
+  flightPath(airportList[10], airportList[11]).setMap(map);
+  flightPath(airportList[12], airportList[13]).setMap(map);
+  flightPath(airportList[14], airportList[12]).setMap(map);
+  flightPath(airportList[0], airportList[16]).setMap(map);
+  flightPath(airportList[6], airportList[15]).setMap(map);
+  flightPath(airportList[0], airportList[4]).setMap(map);
+  flightPath(airportList[17], airportList[18]).setMap(map);
+  flightPath(airportList[14], airportList[19]).setMap(map);
+  
 
 
 /* ---------------------------------
