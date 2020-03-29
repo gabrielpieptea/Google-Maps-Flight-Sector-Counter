@@ -24,33 +24,13 @@ var areaTwoPos = [
   { lat: 51.47973889, lng: 4.51138889 }
 ];
 
-ehamAirportCoords = { lat: 52.30805556, lng: 4.76416667 }; //amsterdam
 
-ehehAirportCoords = { lat: 51.45000000, lng: 5.37444444 }; //eindhoven
-
-bruAirportCoords = { lat: 50.90083056, lng: 4.48388889 }; //bruxelles
-
-anrAirportCoords = { lat: 51.18700000, lng: 4.45611111 }; //antwerp
-
-pariAirportCoords = { lat: 49.009724, lng: 2.547778 }; // paris
-
-lhrAirportCoords = { lat: 51.470020, lng: -0.454295 }; //london
-
-bdpAirportCoords = { lat: 47.437, lng: 19.2571 }; //budapesta
-
-wswAirportCoords = { lat: 52.15949, lng: 20.96699 }; //warsaw
 var markerpic = {
   url: './pics/marker.png',
+  scaledSize: new google.maps.Size(50,50),
+  origin: new google.maps.Point(0.0),
+  anchor: new google.maps.Point(0, 0)
 } 
-
-var svgAnimated = btoa([
-  '<?xml version="1.0"?>',
-  '<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">',
-  '<g fill="none" stroke-width="3" transform="translate(11,11)">',
-  '<circle id="my-circle" cx="0" cy="0" r="9" stroke="darkorange" fill="seagreen" />',
-  '<animate href="#my-circle" attributeName="opacity"  values="1;-2" dur="1s" repeatCount="indefinite" />',
-  '</g></svg>'
-].join('\n'));
 
 
 //----------------
@@ -61,11 +41,12 @@ function initMap() {
   });
   
 
-  var marker = new google.maps.Marker({
-    position: ehamAirportCoords,
+  var marker = (airportMarker) => new google.maps.Marker({
+    position: airportMarker,
+    icon: markerpic,
     map: map
   }); 
-  marker.setMap(map);
+  
   
   var dottedLine = {
     path: 'M 0,-1 0,1',
@@ -85,19 +66,16 @@ function initMap() {
     }]
   });
 
-  flightPath(airportList[0], airportList[4]).setMap(map);
-  flightPath(airportList[5], airportList[7]).setMap(map);
-  flightPath(airportList[5], airportList[9]).setMap(map);
-  flightPath(airportList[10], airportList[11]).setMap(map);
-  flightPath(airportList[12], airportList[13]).setMap(map);
-  flightPath(airportList[14], airportList[12]).setMap(map);
-  flightPath(airportList[0], airportList[16]).setMap(map);
-  flightPath(airportList[6], airportList[15]).setMap(map);
-  flightPath(airportList[0], airportList[4]).setMap(map);
-  flightPath(airportList[17], airportList[18]).setMap(map);
-  flightPath(airportList[14], airportList[19]).setMap(map);
-  
 
+  for(let i = 0; i < flightIndex.length; i++){
+    flightPath(flightIndex[i].x, flightIndex[i].y).setMap(map);
+  }
+
+
+ for(let i = 0; i < airportList.length; i++){
+  marker(airportList[i]).setMap(map);
+}
+    
 
 /* ---------------------------------
 defining sectors + event handling

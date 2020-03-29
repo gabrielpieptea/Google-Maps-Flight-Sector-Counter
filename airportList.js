@@ -1,3 +1,4 @@
+//airport lists and their index
 var airportList = [
     /* 0 */  { lat: 52.30805556, lng: 4.76416667 }, //amsterdam 
     /* 1 */  { lat: 51.45000000, lng: 5.37444444 }, //eindhoven 
@@ -21,3 +22,20 @@ var airportList = [
     /* 19 */ { lat: 52.829374, lng: -1.332134 } //east midlands
 ];
 
+
+//flight routes
+// x - departure airport index, y - arrival airport index
+var flightIndex = [
+    { x: airportList[0],  y: airportList[4]  },
+    { x: airportList[5],  y: airportList[7]  },
+    { x: airportList[5],  y: airportList[9]  },
+    { x: airportList[10], y: airportList[11] },
+    { x: airportList[12], y: airportList[13] },
+    { x: airportList[14], y: airportList[12] },
+    { x: airportList[0],  y: airportList[16] },
+    { x: airportList[6],  y: airportList[15] },
+    { x: airportList[17], y: airportList[18] },
+    { x: airportList[14], y: airportList[19] }
+];
+
+console.log(flightIndex[0].x);
