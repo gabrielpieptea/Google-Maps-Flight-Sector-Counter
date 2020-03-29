@@ -21,12 +21,79 @@ var areaTwoPos = [
   { lat: 51.47973889, lng: 4.51138889 }
 ];
 
+ehamAirportCoords = { lat: 52.30805556, lng: 4.76416667 }; //amsterdam
+
+ehehAirportCoords = { lat: 51.45000000, lng: 5.37444444 };
+
+bruAirportCoords = { lat: 50.90083056, lng: 4.48388889 };
+
+anrAirportCoords = { lat: 51.18700000, lng: 4.45611111 };
+
+pariAirportCoords = { lat: 49.009724, lng: 2.547778 }; // paris
+
+lhrAirportCoords = { lat: 51.470020, lng: -0.454295 }; //london
+
+bdpAirportCoords = { lat: 47.437, lng: 19.2571 }; //budapesta
+
+wswAirportCoords = { lat: 52.15949, lng: 20.96699 }; //warsaw
+var markerpic = {
+  url: './pics/marker.png',
+} 
+
+var svgAnimated = btoa([
+  '<?xml version="1.0"?>',
+  '<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">',
+  '<g fill="none" stroke-width="3" transform="translate(11,11)">',
+  '<circle id="my-circle" cx="0" cy="0" r="9" stroke="darkorange" fill="seagreen" />',
+  '<animate href="#my-circle" attributeName="opacity"  values="1;-2" dur="1s" repeatCount="indefinite" />',
+  '</g></svg>'
+].join('\n'));
+
+
+//----------------
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 51.55, lng: 4.511 },
     zoom: 8
   });
+  
 
+  var marker = new google.maps.Marker({
+    position: ehamAirportCoords,
+    map: map
+  });
+  marker.setMap(map);
+
+  var flightPlanCoordinates = [
+    lhrAirportCoords,
+    wswAirportCoords
+  ];
+
+  var dottedLine = {
+    path: 'M 0,-1 0,1',
+          strokeOpacity: 1,
+          scale: 2
+  };
+
+  var flightPath = new google.maps.Polyline({
+    path: flightPlanCoordinates,
+    geodesic: true,
+    strokeColor: 'blue',
+    strokeOpacity: 0,
+    icons: [{
+      icon: dottedLine,
+      offset: '0',
+      repeat: '12px'
+    }]
+  });
+
+  flightPath.setMap(map);
+
+
+
+/* ---------------------------------
+defining sectors + event handling
+-----------------------------------*/
   var areaOnePolygon = new google.maps.Polygon({
     paths: areaOnePos,
     strokeColor: "#FF0000",
