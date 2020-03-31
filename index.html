@@ -8,10 +8,23 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
- 
-      <div id="map">
-        
+    <div class = 'container'>
+      <div id = 'documentation'>
+        <p>Using AIP data, we have selected 2 adjacent sectors which you can see below. </p>
+        <p> Flights are randomly generated and they are crossing the sectors.</p>
       </div>
+      <div id = 'team'></div>
+      <div id = 'flightno'>
+         <button class ="actionButt" id="hoverArea">HoverArea</button>
+         <button class ="actionButt" id="resetArea">Reset Map</button>
+         <button class ="actionButt" id="nightMode">Night Mode</button>
+      </div>
+    </div>
+
+    <div id="map">
+        
+    </div>
+    <script src="mapStyle.js"></script>
     <script src="svgImage.js"></script>
     <script src="flightSector.js"></script>
     <script src="airportList.js"></script>

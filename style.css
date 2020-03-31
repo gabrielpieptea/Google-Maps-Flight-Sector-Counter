@@ -1,13 +1,33 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 800px;
+        width: 800px;
+        margin-left: 30px;
+        border: 4px solid black;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
         margin: 0;
         padding: 0;
+        background-image: url('./pics/backgroundimg2.jpg');
+        background-repeat: no-repeat;
+        background-size: cover
+        
       }
 
-      
+      #documentation{
+        background-color: rgb(255, 255, 255, 0.5);
+        font-size: larger;
+      }
+
+      #flightno{
+        margin-left: 30px;
+        margin-bottom: 10px;
+      }
+
+      .actionButt {
+        border: 1px solid black;
+        border-radius: 10px;
+      }
