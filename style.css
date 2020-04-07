@@ -1,9 +1,9 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 800px;
-        width: 800px;
-        margin-left: 30px;
+        height: 80vh;
+        width: 80vh;
+        margin-left: 10vh;
         border: 4px solid black;
       }
       /* Optional: Makes the sample page fill the window. */
@@ -13,7 +13,9 @@
         padding: 0;
         background-image: url('./pics/backgroundimg2.jpg');
         background-repeat: no-repeat;
-        background-size: cover
+        background-size: cover;
+        width: auto;
+        height: auto;
         
       }
 
@@ -22,12 +24,52 @@
         font-size: larger;
       }
 
-      #flightno{
+      #actionButtons{
         margin-left: 30px;
         margin-bottom: 10px;
+        align-content: center;
       }
 
       .actionButt {
         border: 1px solid black;
         border-radius: 10px;
       }
+
+      .projectContainer {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin: 10vh 10vh 10vh 10vh;
+      }
+
+
+      #flightno{
+        background-color: aliceblue;
+        padding: 10px;
+        margin: 2px;
+      }
+
+      #infotext {
+        background-color: aliceblue;
+        padding: 10px;
+        margin: 2px;
+      }
+
+      #table {
+        background-color: rgb(15, 73, 100);
+        width: 80vh;
+        height: 80vh;
+        border: 4px solid black;
+         
+        
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+      }
+
+.btn{
+  margin-top: 2px;
+}
