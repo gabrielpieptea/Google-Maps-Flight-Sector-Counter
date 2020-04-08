@@ -17,3 +17,5 @@ var areaOnePos = [
     { lat: 51.49709, lng: 4.806666 },
     { lat: 51.47973889, lng: 4.51138889 }
   ];
+
+  //flight sector defined

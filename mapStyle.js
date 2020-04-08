@@ -78,3 +78,5 @@ let darkMode= [
       stylers: [{color: '#17263c'}]
     }
   ];
+
+  //dark mode taken from google maps documentation
