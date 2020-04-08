@@ -1,5 +1,6 @@
 var map;
 var allFlights = [];
+var acftInSector = 0;
 
 // plane path design
 var dottedLine = {
@@ -77,7 +78,7 @@ all flight path defined
       "des": flightIndex[i].y,
       "count": 0,
       "line": flightPath(flightIndex[i].x, flightIndex[i].y),
-      "currentPosition": flightIndex[i].x
+      "inSector": false
     });
   }
 
@@ -178,9 +179,66 @@ map hover area for sectors
       var icons = allFlights[i].line.get("icons");
       icons[1].offset = allFlights[i].count / 4 + "%";
       allFlights[i].line.set("icons", icons);
-      
-      // TODO insert calculations to get coordinates from offset
+    
+      // verifica pls toata partea asta
 
+      // Compute coordinates based on offset
+
+      var lat1 = allFlights[i].dep.lat;
+      var lat2 = allFlights[i].des.lat;
+      var lon1 = allFlights[i].dep.lng;
+      var lon2 = allFlights[i].des.lng;
+      
+      var R = 6371e3; // metres
+      var φ1 = lat1 * Math.PI/180;
+      var φ2 = lat2 * Math.PI/180;
+      var λ1 = lon1 * Math.PI/180
+      var λ2 = lon2 * Math.PI/180
+      var Δφ = (φ2-φ1);
+      var Δλ = (λ2-λ1) * Math.PI/180;
+
+      var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+              Math.cos(φ1) * Math.cos(φ2) *
+              Math.sin(Δλ/2) * Math.sin(Δλ/2);
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+      var D = R * c;
+
+      // Compute initial bearing
+      var y = Math.sin(λ2-λ1) * Math.cos(φ2);
+      var x = Math.cos(φ1)*Math.sin(φ2) -
+      Math.sin(φ1)*Math.cos(φ2)*Math.cos(λ2-λ1);
+      var brng = Math.atan2(y, x) * 180 / Math.PI;
+      
+      d = allFlights[i].count / 1000 * D;
+      // Calculate final point based on initial bearing and 
+      var φ3 = Math.asin( Math.sin(φ1)*Math.cos(d/R) +
+                    Math.cos(φ1)*Math.sin(d/R)*Math.cos(brng) );
+      var λ3 = λ1 + Math.atan2(Math.sin(brng)*Math.sin(d/R)*Math.cos(φ1),
+                         Math.cos(d/R)-Math.sin(φ1)*Math.sin(φ3));
+
+
+      var lat3 = φ3 * 180 / Math.PI;
+      var lon3 = λ3 * 180 / Math.PI;
+
+      // debugger;
+
+      // verifica intrare sau iesir din sector.
+      var e = new google.maps.LatLng(lat3, lon3);
+      
+      var newInSector = google.maps.geometry.poly.containsLocation(e, areaOnePolygon);
+      if (allFlights[i].inSector && !newInSector)
+        acftInSector--;
+      else if (!allFlights[i].inSector && newInSector)
+        acftInSector++;
+
+      allFlights[i].inSector = newInSector;
     }
-  }, 2000);
+
+    // Update value
+  document.getElementById("flightno").innerHTML = acftInSector;
+  }, 20);
+
+  
+}
 }
