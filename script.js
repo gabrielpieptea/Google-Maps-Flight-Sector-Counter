@@ -1,4 +1,5 @@
 var map;
+var allFlights = [];
 
 // plane path design
 var dottedLine = {
@@ -71,9 +72,13 @@ all flight path defined
       map: map,
     });
   for (let i = 0; i < flightIndex.length; i++) {
-    let currentFlight = planeMotion(
-      flightPath(flightIndex[i].x, flightIndex[i].y)
-    );
+    allFlights.push({
+      "dep": flightIndex[i].x,
+      "des": flightIndex[i].y,
+      "count": 0,
+      "line": flightPath(flightIndex[i].x, flightIndex[i].y),
+      "currentPosition": flightIndex[i].x
+    });
   }
 
   /* ---------------------------------
@@ -166,4 +171,16 @@ map hover area for sectors
   google.maps.event.addListener(map, "click", function (event) {
     alert(google.maps.geometry.poly.containsLocation(punctu, areaOnePolygon));
   });
+  
+  window.setInterval(function() {
+    for (let i = 0; i < flightIndex.length; i++) {
+      allFlights[i].count = (allFlights[i].count + 1) % 1000;
+      var icons = allFlights[i].line.get("icons");
+      icons[1].offset = allFlights[i].count / 4 + "%";
+      allFlights[i].line.set("icons", icons);
+      
+      // TODO insert calculations to get coordinates from offset
+
+    }
+  }, 2000);
 }
