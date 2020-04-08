@@ -14,16 +14,22 @@
     />
   </head>
   <body>
-    <div class="projectContainer">
+    <div class="projectContainer d-flex justify-content-center">
       <div id="map"></div>
       <div id="table">
         <div id="actionButtons">
-          <button class="actionButt btn btn-primary" id="hoverArea">HoverArea</button>
-          <button class="actionButt btn btn-primary" id="resetArea">Reset Map</button>
-          <button class="actionButt btn btn-primary" id="nightMode">Night Mode</button>
+          <button class="actionButt btn btn-primary" id="hoverArea">
+            HoverArea
+          </button>
+          <button class="actionButt btn btn-primary" id="resetArea">
+            Reset Map
+          </button>
+          <button class="actionButt btn btn-primary" id="nightMode">
+            Night Mode
+          </button>
         </div>
         <p id="infotext">Number of flights in current sector:</p>
-        <p id="flightno">test</p>
+        <p id="flightno">0</p>
         <p>
           <button
             class="btn btn-primary"
@@ -33,22 +39,32 @@
             aria-expanded="false"
             aria-controls="projectInfo"
           >
-            Press to see information about project task
+            Press to see/hide information about project task
           </button>
         </p>
         <div class="collapse" id="projectInfo">
           <div class="card card-body">
             <p>Creative Subject #6 (CS#6). Traffic Counts</p>
             <p>
-              Using data from an AIP, select an airspace (CTA) with at least two
-              adjacent sectors.
+              We chose from the Netherlands AIP two adjacent sectors. We
+              gathered the data on the coordinates to plot and separate the area
+              targeted by the rest of the map (fact observed through the outline
+              of the sectors).
             </p>
-            <p>Generate random flights crossing the sectors.</p>
             <p>
-              Calculate the number of flights within the sectors at a given
-              moment in time
+              Then, the main airports of the globe were chosen and random routes
+              were created to see which of them transit through the chosen area.
+              Once an aircraft transits the flight sectors concerned, the
+              counting function takes it into account and adds it to the
+              register. Those that do not pass the space, do not affect
+              anything.
             </p>
-            <p>Assume horizontal flights.</p>
+            <p>
+              *This application helps predict the transit on a sector. Thus, it
+              is possible to estimate the number of flights that will transit
+              certain areas for the opening of the required sectors. By doing
+              this, the problem of capacity can be avoided.
+            </p>
           </div>
         </div>
         <p>
@@ -60,57 +76,96 @@
             aria-expanded="false"
             aria-controls="teamMembers"
           >
-            Press to see team members and their contribution
+            Press to see/hide team members and their contribution
           </button>
         </p>
         <div class="collapse" id="teamMembers">
           <div class="card card-body">
-            <div class="btn-group dropright">
-              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="btn-group dropleft">
+              <button
+                type="button"
+                class="btn btn-secondary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
                 Pieptea Gabriel
               </button>
               <div class="dropdown-menu">
-                <p>code writing, research</p>
+                <p>is the team leader and ensured the distribution of responsibilities in the team </p>
+                <p>
+                  took care of the coding part of the application, as well as the research regarding Google API and creating the functions needed
+                  </p>
               </div>
             </div>
-            <div class="btn-group dropright">
-              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="btn-group dropleft">
+              <button
+                type="button"
+                class="btn btn-secondary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
                 Andrei Georgiana
               </button>
               <div class="dropdown-menu">
-                <p>code writing, research</p>
+                <p>brought her contribution in the coding part of the application, but also in the research part regarding the application</p>
               </div>
             </div>
-            <div class="btn-group dropright">
-              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="btn-group dropleft">
+              <button
+                type="button"
+                class="btn btn-secondary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
                 Toma Ioana
               </button>
               <div class="dropdown-menu">
-                <p>research</p>
+                <p>gathered valid information for all the data needed (AIP sectors, airports) and organized the data</p>
               </div>
             </div>
-            <div class="btn-group dropright">
-              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="btn-group dropleft">
+              <button
+                type="button"
+                class="btn btn-secondary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
                 Serban Laura
               </button>
               <div class="dropdown-menu">
-                <p>research</p>
+                <p>gathered valid information for all the data needed (AIP sectors, airports) and organized the data</p>
               </div>
             </div>
-            <div class="btn-group dropright">
-              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="btn-group dropleft">
+              <button
+                type="button"
+                class="btn btn-secondary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
                 Staicu Sandra
               </button>
               <div class="dropdown-menu">
-                <p>presentation</p>
+                <p>worked on the visual presentation of the project </p>
               </div>
             </div>
-            <div class="btn-group dropright">
-              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="btn-group dropleft">
+              <button
+                type="button"
+                class="btn btn-secondary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
                 Al Ismael Hasan Esah
               </button>
               <div class="dropdown-menu">
-                <p>presentation</p>
+                <p>worked on the visual presentation of the project </p>
               </div>
             </div>
           </div>
